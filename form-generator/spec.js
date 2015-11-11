@@ -16,11 +16,11 @@ define(["./index"], function (FormGenerator) {
           expect(FormGenerator()).toExist();
         });
 
-       it("it should have a form-inline class", function () {
+       it("should have a form-inline class", function () {
           expect(FormGenerator()).toHaveClass("form-inline");
        });
 
-       it("it should have a an input box for name and e-mail", function () {
+       it("should have a an input box for name and e-mail", function () {
           var inputFormat = [
             { type: "name", value: "Amber Awesome" },
             { type: "email", value: "amber.awesome@example.com"}
