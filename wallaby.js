@@ -5,11 +5,11 @@ module.exports = function () {
       {pattern: "lib/jquery.js", instrument: false},
       {pattern: "lib/jasmine-jquery.js", instrument: false},
       {pattern: "lib/require.js", instrument: false},
-      {pattern: "form-generator/index.js", load: false},
+      {pattern: "**/index.js", load: false},
       {pattern: "bootstrap.js", instrument: false}
     ],
     tests: [
-      {pattern: "form-generator/spec.js", load: false}
+      {pattern: "**/spec.js", load: false}
     ]
   };
 };
