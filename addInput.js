@@ -1,7 +1,6 @@
 function addInput(inputFormat){
-    var format = inputFormat;
     $("#addParticipant").click(function (){
-      if(Array.isArray(format)) {
+      if(Array.isArray(inputFormat)) {
         var $form = $("form.form-horizontal");
 
         inputFormat.forEach(function (input) {

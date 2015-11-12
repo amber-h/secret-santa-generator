@@ -11,6 +11,7 @@
     <script src="bootstrap.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="addInput.js"></script>
+    <script src="submitParticipants.js"></script>
   </head>
   <body>
     <div class="container">
@@ -25,9 +26,10 @@
       </form>
       <button type="button" id="addParticipant" class="btn btn-default">Add Another Participant</button>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submitParticipants" class="btn btn-primary">Submit</button>
       <script>
-          addInput([{type: "email"}])
+          addInput([{type: "email"}]);
+          submitParticipants();
       </script>
     </div>
   </body>
