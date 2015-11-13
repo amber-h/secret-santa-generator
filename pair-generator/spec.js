@@ -1,40 +1,58 @@
-define(["./index"], function (PairGenerator) {
+define(["./index"], function(PairGenerator) {
 
-  describe("A pair generator", function () {
+  describe("A pair generator", function() {
 
     it("is defined", function() {
       expect(PairGenerator).toBeDefined();
     });
 
     it("should return a function", function() {
-       expect(typeof PairGenerator).toBe("function");
+      expect(typeof PairGenerator).toBe("function");
     });
 
-    describe("instance", function () {
+    describe("instance", function() {
 
       it("should return a single pair when there is only one participant", function() {
-        var participant = { email: "amber.awesome@example.com" };
+        var participant = {
+          email: "amber.awesome@example.com"
+        };
         var pairs = PairGenerator([participant]);
 
-        var expectedPair = { purchaser: participant, recipient: participant}
+        var expectedPair = {
+          purchaser: participant,
+          recipient: participant
+        }
         expect(pairs[0]).toEqual(expectedPair);
       });
 
       it("should return two pairs when there are two participants", function() {
-        var firstParticipant = { email: "amber.awesome@example.com" };
-        var secondParticipant = { email: "panda.bear@example.com" };
+        var firstParticipant = {
+          email: "amber.awesome@example.com"
+        };
+        var secondParticipant = {
+          email: "panda.bear@example.com"
+        };
 
         var pairs = PairGenerator([firstParticipant, secondParticipant]);
 
-        var expectedFirstPair = { purchaser: firstParticipant, recipient: secondParticipant}
+        var expectedFirstPair = {
+          purchaser: firstParticipant,
+          recipient: secondParticipant
+        }
         expect(pairs.length).toEqual(2);
         expect(pairs[0]).toEqual(expectedFirstPair);
       });
 
       it("should return 3 distinct pairs and each participant should appear as purchaser only once", function() {
-        var firstParticipant = { email: "amber.awesome@example.com" };
-        var secondParticipant = { email: "panda.bear@example.com" };
-        var thirdParticipant = { email: "koala.bear@example.com" };
+        var firstParticipant = {
+          email: "amber.awesome@example.com"
+        };
+        var secondParticipant = {
+          email: "panda.bear@example.com"
+        };
+        var thirdParticipant = {
+          email: "koala.bear@example.com"
+        };
 
         var pairs = PairGenerator([firstParticipant, secondParticipant, thirdParticipant]);
 
@@ -49,9 +67,15 @@ define(["./index"], function (PairGenerator) {
       });
 
       it("should not allow purchaser and recipient to be the same participant", function() {
-        var firstParticipant = { email: "amber.awesome@example.com" };
-        var secondParticipant = { email: "panda.bear@example.com" };
-        var thirdParticipant = { email: "koala.bear@example.com" };
+        var firstParticipant = {
+          email: "amber.awesome@example.com"
+        };
+        var secondParticipant = {
+          email: "panda.bear@example.com"
+        };
+        var thirdParticipant = {
+          email: "koala.bear@example.com"
+        };
 
         var pairs = PairGenerator([firstParticipant, secondParticipant, thirdParticipant]);
 
@@ -62,9 +86,15 @@ define(["./index"], function (PairGenerator) {
       });
 
       it("should not allow participant to be a recipient multiple times", function() {
-        var firstParticipant = { email: "amber.awesome@example.com" };
-        var secondParticipant = { email: "panda.bear@example.com" };
-        var thirdParticipant = { email: "koala.bear@example.com" };
+        var firstParticipant = {
+          email: "amber.awesome@example.com"
+        };
+        var secondParticipant = {
+          email: "panda.bear@example.com"
+        };
+        var thirdParticipant = {
+          email: "koala.bear@example.com"
+        };
 
         var pairs = PairGenerator([firstParticipant, secondParticipant, thirdParticipant]);
 

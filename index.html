@@ -1,47 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Secret Santa Generator</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <script src="lib/require.js"></script>
-    <script src="lib/jquery.js"></script>
-    <script src="bootstrap.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Secret Santa Generator</h1>
-      <p>Please enter the emails of the Secret Santa participants</p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Secret Santa Generator</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-      <form class="form-horizontal">
-            <button type="submit" id="submitParticipants" class="btn btn-primary col-sm-offset-2">Submit</button>
-      </form>
+  <script src="lib/require.js"></script>
+  <script src="lib/jquery.js"></script>
+  <script src="bootstrap.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Secret Santa Generator</h1>
+    <p>Please enter the emails of the Secret Santa participants</p>
+
+    <form class="form-horizontal">
+      <button type="submit" id="submitParticipants" class="btn btn-primary col-sm-offset-2">Submit</button>
       <button type="button" id="addParticipant" class="btn btn-default">Add Another Participant</button>
+    </form>
 
-      <script>
-      require(["form-generator/index", "pair-generator/index"], function(FormGenerator, PairGenerator) {
-          var inputFormat = [{type: "email", value: "amber.awesome@example.com"}];
+    <script>
+      require(["form-generator/index", "pair-generator/index", "email-sender/index"], function(FormGenerator, PairGenerator, EmailSender) {
+        var inputFormat = [{
+          type: "email",
+          value: "amber.awesome@example.com"
+        }];
 
+        FormGenerator(inputFormat, $("form.form-horizontal"));
+        $("#addParticipant").click(function() {
           FormGenerator(inputFormat, $("form.form-horizontal"));
-          $("#addParticipant").click(function (){
-              FormGenerator(inputFormat, $("form.form-horizontal"));
-          });
+        });
 
-        $(".form-horizontal").submit(function (){
+        $(".form-horizontal").submit(function() {
           var participants = [];
-          $("input").each(function (formElement){
-            var participant = { email: $("#"+formElement+"").val() };
+          $("input").each(function(formElement) {
+            var participant = {
+              email: $("#" + formElement + "").val()
+            };
             participants.push(participant);
             alert(participant.email)
           });
           var pairs = PairGenerator(participants);
+          alert("I AM NOW HERE")
+          EmailSender(pairs);
         });
-        });
+      });
+    </script>
+  </div>
+</body>
 
-      </script>
-    </div>
-  </body>
 </html>
