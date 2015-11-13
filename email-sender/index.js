@@ -2,6 +2,7 @@ define([], function() {
   return function(pairs) {
     alert("IN EMAIL SENDER")
     pairs.forEach(function(pair) {
+      alert("sendingEmails")
       sendEmail(pair);
     });
 

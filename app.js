@@ -8,13 +8,11 @@ require(["form-generator/index", "pair-generator/index", "email-sender/index"], 
   $form.validator();
   FormGenerator(inputFormat, $form);
   $("#addParticipant").click(function(e) {
-    console.log(e.isDefaultPrevented())
     if (e.isDefaultPrevented()) {
       alert("invalid email")
     } else {
       FormGenerator(inputFormat, $("form.form-horizontal"));
     }
-
   });
 
   $(".form-horizontal").submit(function(e) {

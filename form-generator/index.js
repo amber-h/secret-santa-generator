@@ -20,10 +20,17 @@ define([], function() {
 
         var $validations = $('<div>').addClass("help-block with-errors");
 
-        var $removeInput = $("<div>").addClass("col-xs-1");
-        var $button = $("<button type='button'>").addClass("btn btn-default")
-        var $icon = $("<i>").addClass("fa fa-minus");
-        $removeInput.append($button.append($icon));
+        if ($("input").length > 0) {
+          var $removeInput = $("<div>").addClass("col-xs-1");
+          var $button = $("<button type='button'>").addClass("btn btn-default removeInput")
+          var $icon = $("<i>").addClass("fa fa-minus");
+          $removeInput.append($button.append($icon));
+
+          $($removeInput).click(function() {
+            var $row = $(this).parents(".form-group");
+            $row[0].remove();
+          });
+        };
 
         $formElement.append($label);
         $formElement.append($inputElement);
