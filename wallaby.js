@@ -6,6 +6,7 @@ module.exports = function () {
       {pattern: "lib/jasmine-jquery.js", instrument: false},
       {pattern: "lib/require.js", instrument: false},
       {pattern: "**/index.js", load: false},
+      {pattern: "**/addInput.js", load: false},
       {pattern: "bootstrap.js", instrument: false}
     ],
     tests: [

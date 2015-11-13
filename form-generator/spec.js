@@ -17,7 +17,7 @@ define(["./index"], function (FormGenerator) {
         });
 
        it("should have a form-inline class", function () {
-          expect(FormGenerator()).toHaveClass("form-inline");
+          expect(FormGenerator()).toHaveClass("form-horizontal");
        });
 
        it("should have a an input box for name and e-mail", function () {
@@ -27,7 +27,6 @@ define(["./index"], function (FormGenerator) {
           ]
 
           var form = FormGenerator(inputFormat);
-
           var firstFormInput = form.querySelector("input:first-of-type");
           var secondFormInput = form.querySelector("input:last-of-type");
 
