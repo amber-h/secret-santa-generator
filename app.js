@@ -8,29 +8,24 @@ require(["form-generator/index", "pair-generator/index", "email-sender/index"], 
   $form.validator();
   FormGenerator(inputFormat, $form);
   $("#addParticipant").click(function(e) {
-    if (e.isDefaultPrevented()) {
-      alert("invalid email")
-    } else {
-      FormGenerator(inputFormat, $("form.form-horizontal"));
-    }
+    FormGenerator(inputFormat, $("form.form-horizontal"));
   });
 
   $(".form-horizontal").submit(function(e) {
-    if(e.isDefaultPrevented()){
-    } else {
-      EmailSender(generatePairs());
+    if (e.isDefaultPrevented()) {} else {
+      var pairs = generatePairs();
+      EmailSender(pairs);
     }
-
   });
 
   var generatePairs = function() {
     var participants = [];
-     $("input").each(function(formElement) {
-       var participant = {
-         email: $("#" + formElement + "").val()
-       };
-       participants.push(participant);
-     });
-     var pairs = PairGenerator(participants);
-   }
+    $("input").each(function(formElement) {
+      var participant = {
+        email: $("#" + formElement + "").val()
+      };
+      participants.push(participant);
+    });
+    return PairGenerator(participants);;
+  };
 });
