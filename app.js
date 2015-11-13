@@ -4,7 +4,9 @@ require(["form-generator/index", "pair-generator/index", "email-sender/index"], 
     value: "amber.awesome@example.com"
   }];
 
-  FormGenerator(inputFormat, $("form.form-horizontal"));
+  var $form = $("form.form-horizontal");
+  $form.validator();
+  FormGenerator(inputFormat, $form);
   $("#addParticipant").click(function() {
     FormGenerator(inputFormat, $("form.form-horizontal"));
   });
