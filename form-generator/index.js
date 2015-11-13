@@ -20,8 +20,14 @@ define([], function() {
 
         var $validations = $('<div>').addClass("help-block with-errors");
 
+        var $removeInput = $("<div>").addClass("col-xs-1");
+        var $button = $("<button type='button'>").addClass("btn btn-default")
+        var $icon = $("<i>").addClass("fa fa-minus");
+        $removeInput.append($button.append($icon));
+
         $formElement.append($label);
         $formElement.append($inputElement);
+        $formElement.append($removeInput);
         $formElement.append($validations);
 
         $formElement.insertBefore($("button#submitParticipants"));

@@ -1,16 +1,17 @@
 define([], function() {
   return function(pairs) {
-    console.log("IN EMAIL SENDER")
+    alert("IN EMAIL SENDER")
     pairs.forEach(function(pair) {
       sendEmail(pair);
     });
 
     function sendEmail(pair) {
+      alert(pair)
       $.ajax({
         type: "POST",
         url: "https://mandrillapp.com/api/1.0/messages/send.json",
         data: {
-          'key': 'API_KEY_HERE',
+          'key': 'KooggMys5J14GU90HIJPVg',
           'message': {
             'from_email': 'amber.houle3@gmail.com',
             'to': [{
