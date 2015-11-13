@@ -10,15 +10,23 @@ define([], function() {
     }
     var potentialRecipients = participants;
     participants.forEach(function(participant) {
-      var recipient = participant !== potentialRecipients[potentialRecipients.length - 1] ? potentialRecipients[potentialRecipients.length - 1] : potentialRecipients[0];
+      var recipient = assignRecipientTo(participant, potentialRecipients);
       pairs.push({
         purchaser: participant,
         recipient: recipient
       });
-      potentialRecipients = potentialRecipients.filter(function(p) {
-        return p !== recipient;
-      });
+      potentialRecipients = removeAssignedRecipientFrom(potentialRecipients, recipient);
     });
     return pairs
   };
+
+  function assignRecipientTo(participant, potentialRecipients){
+    return participant !== potentialRecipients[potentialRecipients.length - 1] ? potentialRecipients[potentialRecipients.length - 1] : potentialRecipients[0];
+  }
+
+  function removeAssignedRecipientFrom(potentialRecipients, recipient) {
+    return potentialRecipients.filter(function(p) {
+      return p !== recipient;
+    });
+  }
 });
