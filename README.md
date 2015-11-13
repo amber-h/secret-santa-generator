@@ -1,6 +1,6 @@
 # Secret Santa Generator
 
-Secret Santa Generator will generate pairs for a secret santa gift exchange. Participants of the gift exchange will receive an e-mail notifying them of their secret santa gift recipient.
+Secret Santa Generator will generate pairs for a secret santa gift exchange. Participants of the gift exchange will receive an e-mail notifying them of who they should purchase a gift for.
 
 ## Setup
 
