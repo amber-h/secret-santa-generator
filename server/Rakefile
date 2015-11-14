@@ -1,0 +1,15 @@
+require 'rake'
+require 'rspec/core/rake_task'
+require './app'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = Dir.glob('spec/*_spec.rb')
+end
+
+task :run do
+  set :bind, '0.0.0.0'
+  set :port, 4567
+  App.run!
+end
+
+task :default => :spec
