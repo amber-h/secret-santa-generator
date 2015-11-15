@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'json'
 
 class App < Sinatra::Base
 
@@ -7,7 +8,9 @@ class App < Sinatra::Base
   end
 
   post '/participants' do
-    puts "Hello World"
+    headers 'Access-Control-Allow-Origin' => '*'
+    data = JSON.parse request.body.read
+    puts "Hello #{data}!"
   end
 
 end
