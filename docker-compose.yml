@@ -1,4 +1,19 @@
+postfix:
+  image: catatnight/postfix
+  ports:
+    - '25:25'
+  environment:
+    - maildomain=secretsanta.example.com
+    - smtp_user=user:pwd
 server:
   build: ./server
   ports:
     - '4567:4567'
+  links:
+    - postfix
+client:
+  build: ./client
+  volumes:
+    - './client/html:/usr/share/nginx/html'
+  ports:
+    - '80:80'

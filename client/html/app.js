@@ -30,7 +30,7 @@ require(["form-generator/index"], function(FormGenerator) {
   };
 
   var sendRequest = function(participants) {
-    $.post("http://localhost:4567/participants", JSON.stringify(participants),
+    $.post("http://192.168.99.100:4567/participants", JSON.stringify(participants),
     function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
     });
