@@ -1,4 +1,4 @@
-require(["form-generator/index", "pair-generator/index", "email-sender/index"], function(FormGenerator, PairGenerator, EmailSender) {
+require(["form-generator/index"], function(FormGenerator) {
   var inputFormat = [{
     type: "email",
     value: "amber.awesome@example.com"
@@ -13,12 +13,12 @@ require(["form-generator/index", "pair-generator/index", "email-sender/index"], 
 
   $(".form-horizontal").submit(function(e) {
     if (e.isDefaultPrevented()) {} else {
-      var pairs = generatePairs();
-      EmailSender(pairs);
+      var participants = formatParticipants();
+      sendRequest(participants);
     }
   });
 
-  var generatePairs = function() {
+  var formatParticipants = function() {
     var participants = [];
     $("input").each(function(formElement) {
       var participant = {
@@ -26,6 +26,14 @@ require(["form-generator/index", "pair-generator/index", "email-sender/index"], 
       };
       participants.push(participant);
     });
-    return PairGenerator(participants);;
+    return participants;
   };
+
+  var sendRequest = function(participants) {
+    $.post("http://localhost:4567/participants", JSON.stringify(participants),
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+  };
+
 });
