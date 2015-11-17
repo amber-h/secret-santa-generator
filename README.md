@@ -8,6 +8,10 @@ Secret Santa Generator will generate pairs for a secret santa gift exchange. Par
 * Once installed, create a docker machine: `docker-machine create --driver virtualbox dev`
 * Export the docker-machines environment variables: `eval $(docker-machine env dev)`
 
+* You will need to get a [Mandrill Api key](https://mandrillapp.com)
+* Create a ***.env*** file in the ***server*** directory and add the following line:
+`MANDRILL_API_KEY='your_api_key'`
+
 ## Running Application
 
 * run `docker-compose up` and navigate to the ip of your docker-machine (`docker-machine ip dev`)
