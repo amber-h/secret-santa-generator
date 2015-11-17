@@ -3,9 +3,10 @@ require 'mandrill'
 class EmailSender
 
   def send_mail pairs
+    mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
+
     pairs.each do |pair|
       begin
-        mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
         message = build_email pair[:purchaser][:email], pair[:purchaser][:recipient][:email]
         async = true
         result = mandrill.messages.send message, async
