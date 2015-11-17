@@ -5,7 +5,7 @@ class EmailSender
   def send_mail pairs
     pairs.each do |pair|
       begin
-        mandrill = Mandrill::API.new 'API_KEY'
+        mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
         message = build_email pair[:purchaser][:email], pair[:purchaser][:recipient][:email]
         async = true
         result = mandrill.messages.send message, async

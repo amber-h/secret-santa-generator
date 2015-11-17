@@ -1,4 +1,5 @@
 require 'rake'
+require 'dotenv'
 require 'rspec/core/rake_task'
 require './app'
 
@@ -7,6 +8,7 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 task :run do
+  Dotenv.load
   App.run!
 end
 
