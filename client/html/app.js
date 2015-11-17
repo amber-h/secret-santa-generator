@@ -11,11 +11,10 @@ require(["form-generator/index"], function(FormGenerator) {
     FormGenerator(inputFormat, $("form.form-horizontal"));
   });
 
-  $(".form-horizontal").submit(function(e) {
-    if (e.isDefaultPrevented()) {} else {
+  $(".form-horizontal").submit(function(event) {
+    event.preventDefault();
       var participants = formatParticipants();
       sendRequest(participants);
-    }
   });
 
   var formatParticipants = function() {
