@@ -7,8 +7,6 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 task :run do
-  set :bind, '0.0.0.0'
-  set :port, 4567
   App.run!
 end
 
