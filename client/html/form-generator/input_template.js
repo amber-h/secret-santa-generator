@@ -7,9 +7,16 @@ define([], function() {
     var $label;
     if (Array.isArray(inputFormat)) {
       inputFormat.forEach(function(input){
-          var $label = $("<label>").text(input.label).addClass("col-md-4");
+          var $label = $("<label>").text(input.label).addClass(input.boxSize);
+          var $input = $("<div>").addClass("input").addClass(input.boxSize);
+          var $inputElement = $("<input>").addClass("form-control");
+          $inputElement.attr("name", input.type);
+          $inputElement.attr("placeholder", input.value);
+
+          $input.append($inputElement);
 
           $labelRow.append($label);
+          $inputRow.append($input);
       })
 
     }

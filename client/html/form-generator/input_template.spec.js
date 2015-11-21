@@ -16,14 +16,14 @@ define(["./input_template"], function(InputTemplate) {
         expect(InputTemplate()).toExist();
       });
 
-      it("has a row class for the label row and input row", function() {
-        console.log(InputTemplate())
-        expect(InputTemplate()).toHaveClass("row");
-        //test that you can find 2 instances of row class;
-      });
-
       it("has input labels based on input format", function() {
-        var inputFormat = [{ label: "Name" }, { label: "Email"}]
+        var inputFormat = [{
+          label: "Name",
+          boxSize: "col-md-4"
+        }, {
+          label: "Email",
+          boxSize: "col-md-4"
+        }]
 
         var form = InputTemplate(inputFormat);
 
@@ -36,28 +36,37 @@ define(["./input_template"], function(InputTemplate) {
         expect(secondLabel).toHaveText("Email");
       })
 
-      // it("should have a an input box for name and e-mail", function() {
-      //   var inputFormat = [{
-      //     label: "Name",
-      //     type: "text",
-      //     value: "Amber Awesome",
-      //     boxSize: "col-md-2"
-      //   }, {
-      //     label: "Email",
-      //     type: "email",
-      //     value: "amber.awesome@example.com",
-      //     boxSize: "col-md-4"
-      //   }]
-      //
-      //   var form = InputTemplate(inputFormat);
-      //   var firstFormInput = form.querySelector("input:first-of-type");
-      //   var secondFormInput = form.querySelector("input:last-of-type");
-      //
-      //   expect(firstFormInput).toHaveClass("form-control");
-      //   expect(firstFormInput).toHaveId("inputname");
-      //   expect(firstFormInput.getAttribute("type")).toEqual("name");
-      //   expect(firstFormInput.getAttribute("placeholder")).toEqual("Amber Awesome");
-      // });
+      it("has input elements based on input format", function() {
+        var inputFormat = [{
+          label: "Name",
+          type: "text",
+          value: "Amber Awesome",
+          boxSize: "col-md-2"
+        }, {
+          label: "Email",
+          type: "email",
+          value: "amber.awesome@example.com",
+          boxSize: "col-md-4"
+        }]
+
+        var form = InputTemplate(inputFormat);
+
+        var firstInput = form.querySelector(".input:first-of-type");
+        expect(firstInput).toHaveClass("col-md-2");
+
+        var firstInputElement = firstInput.querySelector("input");
+        expect(firstInputElement).toHaveClass("form-control");
+        expect(firstInputElement.getAttribute("name")).toEqual("text");
+        expect(firstInputElement.getAttribute("placeholder")).toEqual("Amber Awesome");
+
+        var secondInput = form.querySelector(".input:last-of-type");
+        expect(secondInput).toHaveClass("col-md-4");
+
+        var secondInputElement = secondInput.querySelector("input");
+        expect(secondInputElement).toHaveClass("form-control");
+        expect(secondInputElement.getAttribute("name")).toEqual("email");
+        expect(secondInputElement.getAttribute("placeholder")).toEqual("amber.awesome@example.com");
+      })
 
     });
 

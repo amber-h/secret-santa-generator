@@ -34,7 +34,18 @@
 
     <script>
       require(["form-generator/input_template"], function(InputTemplate) {
-        var inputFormat = [{ label: "Name" }, { label: "Email"}]
+        var inputFormat = [{
+          label: "Name",
+          type: "text",
+          value: "Amber Awesome",
+          boxSize: "col-md-2"
+        }, {
+          label: "Email",
+          type: "email",
+          value: "amber.awesome@example.com",
+          boxSize: "col-md-4"
+        }]
+
         $(".form-group").append(InputTemplate(inputFormat));
       })
     </script>
