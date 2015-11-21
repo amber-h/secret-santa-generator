@@ -7,6 +7,11 @@ h1 {
   color: #fff;
 }
 
+button, input, label {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .navbar {
   background-color: rgb(210, 26, 26);
 }

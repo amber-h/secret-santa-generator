@@ -27,11 +27,17 @@
     <h3>Please enter the emails of the Secret Santa participants</h3>
 
     <form class="form-horizontal">
+      <div class="form-group"></div>
       <button type="submit" id="submitParticipants" class="btn btn-primary col-sm-2">Submit</button>
       <button type="button" id="addParticipant" class="btn btn-default">Add Another Participant</button>
     </form>
 
-    <script src="app.js"></script>
+    <script>
+      require(["form-generator/input_template"], function(InputTemplate) {
+        var inputFormat = [{ label: "Name" }, { label: "Email"}]
+        $(".form-group").append(InputTemplate(inputFormat));
+      })
+    </script>
   </div>
 </body>
 
