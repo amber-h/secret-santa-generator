@@ -29,12 +29,25 @@ require(["form-generator/index", "add-form-element/index"], function(InputTempla
 
   var formatParticipants = function() {
     var participants = [];
-    $("input").each(function(formElement) {
+    var names = [];
+    var emails = [];
+
+    $("input").each(function(index) {
+      if ($(this).attr("type") == "text")
+      names.push($(this).val());
+
+      if ($(this).attr("type") == "email")
+      emails.push($(this).val());
+    });
+
+    for (i = 0; i < names.length; i += 1) {
       var participant = {
-        email: $("#" + formElement + "").val()
+        name: names[i],
+        email: emails[i]
       };
       participants.push(participant);
-    });
+    };
+
     return participants;
   };
 
