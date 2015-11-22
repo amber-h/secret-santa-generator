@@ -1,0 +1,27 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "server",
+      "image": "amberhoule/secret-santa-server:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 4567,
+          "containerPort": 4567
+        }
+      ]
+    },
+    {
+      "name": "client",
+      "image": "amberhoule/secret-santa-client:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ]
+    }
+  ]
+}
