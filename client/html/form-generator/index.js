@@ -11,6 +11,7 @@ define([], function() {
           var $input = $("<div>").addClass("input").addClass(input.boxSize);
           var $inputElement = $("<input>").addClass("form-control");
           $inputElement.attr("name", input.type);
+          $inputElement.attr("type", input.type);
           $inputElement.attr("placeholder", input.value);
 
           $labelRow.append($label);

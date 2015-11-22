@@ -1,14 +1,24 @@
-require(["form-generator/index"], function(FormGenerator) {
+require(["form-generator/index", "add-form-element/index"], function(InputTemplate, AddFormElement) {
   var inputFormat = [{
+    label: "Name",
+    type: "text",
+    value: "Amber Awesome",
+    boxSize: "col-md-2"
+  }, {
+    label: "Email",
     type: "email",
-    value: "amber.awesome@example.com"
-  }];
+    value: "amber.awesome@example.com",
+    boxSize: "col-md-4"
+  }]
 
   var $form = $("form.form-horizontal");
   $form.validator();
-  FormGenerator(inputFormat, $form);
+
+  $(InputTemplate(inputFormat)).insertBefore($("button#submitParticipants"));
+
   $("#addParticipant").click(function(e) {
-    FormGenerator(inputFormat, $("form.form-horizontal"));
+    var inputElementFormat = InputTemplate(inputFormat);
+    $(inputElementFormat).insertBefore($("button#submitParticipants"));
   });
 
   $(".form-horizontal").submit(function(event) {

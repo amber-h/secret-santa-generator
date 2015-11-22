@@ -33,29 +33,7 @@
       <button type="button" id="addParticipant" class="btn btn-default">Add Another Participant</button>
     </form>
 
-    <script>
-      require(["form-generator/index"], function(InputTemplate) {
-        var inputFormat = [{
-          label: "Name",
-          type: "text",
-          value: "Amber Awesome",
-          boxSize: "col-md-2"
-        }, {
-          label: "Email",
-          type: "email",
-          value: "amber.awesome@example.com",
-          boxSize: "col-md-4"
-        }]
-
-        var inputElement = InputTemplate(inputFormat);
-        $(inputElement).insertBefore($("button#submitParticipants"));
-
-        $("#addParticipant").click(function(e) {
-          var inputElementFormat = InputTemplate(inputFormat);
-          $(inputElementFormat).insertBefore($("button#submitParticipants"));
-        });
-
-      })
+    <script src="app.js">
     </script>
   </div>
 </body>
