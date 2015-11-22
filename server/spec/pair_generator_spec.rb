@@ -10,12 +10,14 @@ describe 'Pair Generator' do
 
     context 'there is one participant' do
       it 'pairs the participant with themself' do
-        participants = [{ "email" => "lonely.participant@example.com" }]
+        participants = [{ "name" => "lonely lady", "email" => "lonely.participant@example.com" }]
         actual_pairs = PairGenerator.new.generate_pairs(participants)
 
         expected_pairs = [
           { :purchaser =>
-            { :email => "lonely.participant@example.com", :recipient => { :email => "lonely.participant@example.com" } }
+            { :name => "lonely lady",
+              :email => "lonely.participant@example.com",
+              :recipient => { :name => "lonely lady", :email => "lonely.participant@example.com" } }
           }
         ]
 
@@ -25,15 +27,22 @@ describe 'Pair Generator' do
 
     context 'there are two participants' do
       it 'pairs the first participant with the second participant' do
-        participants = [{ "email" => "first.participant@example.com" }, { "email" => "second.participant@example.com" }]
+        participants = [{ "name" => "first", "email" => "first.participant@example.com" },
+                        { "name" => "second", "email" => "second.participant@example.com" }]
         actual_pairs = PairGenerator.new.generate_pairs(participants)
 
         expected_pairs = [
           { :purchaser =>
-            { :email => "first.participant@example.com", :recipient => { :email => "second.participant@example.com" } }
+            { :name => "first",
+              :email => "first.participant@example.com",
+              :recipient => { :name => "second", :email => "second.participant@example.com" }
+            }
           },
           { :purchaser =>
-            { :email => "second.participant@example.com", :recipient => { :email => "first.participant@example.com" } }
+            { :name => "second",
+              :email => "second.participant@example.com",
+              :recipient => { :name => "first", :email => "first.participant@example.com" }
+            }
           }
         ]
 
@@ -46,7 +55,6 @@ describe 'Pair Generator' do
         participants = [{ "email" => "first.participant@example.com" }, { "email" => "second.participant@example.com" }, { "email" => "third.participant@example.com" }]
         actual_pairs = PairGenerator.new.generate_pairs(participants)
 
-        puts actual_pairs
         expect(actual_pairs[0][:purchaser][:email]).not_to eq(actual_pairs[0][:purchaser][:recipient][:email])
         expect(actual_pairs[1][:purchaser][:email]).not_to eq(actual_pairs[1][:purchaser][:recipient][:email])
         expect(actual_pairs[2][:purchaser][:email]).not_to eq(actual_pairs[2][:purchaser][:recipient][:email])

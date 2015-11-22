@@ -10,8 +10,8 @@ class App < Sinatra::Base
   post '/participants' do
     headers 'Access-Control-Allow-Origin' => '*'
 
-    data = JSON.parse request.body.read
-    pairs = PairGenerator.new.generate_pairs data
+    participants = JSON.parse request.body.read
+    pairs = PairGenerator.new.generate_pairs participants
     EmailSender.new.send_mail pairs
 
     response

@@ -1,7 +1,7 @@
 class PairGenerator
 
   def generate_pairs participants
-    return [format_pair(participants.first["email"], participants.first["email"])] if participants.size == 1
+    return [format_pair(participants.first, participants.first)] if participants.size == 1
 
     potential_recipients = Array.new(participants)
     pairs = []
@@ -13,7 +13,7 @@ class PairGenerator
          recipient_index = Random.rand(potential_recipients.length)
       end
 
-      pairs.push(format_pair(participant["email"], potential_recipients[recipient_index]["email"]))
+      pairs.push(format_pair(participant, potential_recipients[recipient_index]))
       potential_recipients.delete_at(recipient_index)
     end
 
@@ -23,8 +23,13 @@ class PairGenerator
 
   private
 
-  def format_pair purchaser_email, recipient_email
-    { :purchaser => { :email => purchaser_email, :recipient => { :email => recipient_email } } }
+  def format_pair purchaser, recipient
+    { :purchaser =>
+      { :name => purchaser["name"],
+        :email => purchaser["email"],
+        :recipient => { :name => recipient["name"], :email => recipient["email"] }
+      }
+    }
   end
 
 end
