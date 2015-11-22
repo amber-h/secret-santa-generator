@@ -4,7 +4,7 @@ isWallabyRun ? wallaby.delayStart() : void(0);
 
 requirejs.config({
     shim: {
-      "lib/jquery": {
+      "js/lib/jquery": {
         exports: "jQuery"
       }
     },

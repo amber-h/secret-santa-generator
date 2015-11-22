@@ -1,4 +1,4 @@
-require(["form-generator/index", "add-form-element/index"], function(InputTemplate, AddFormElement) {
+require(["js/form-generator/index", "js/add-form-element/index"], function(InputTemplate, AddFormElement) {
   var inputFormat = [{
     label: "Name",
     type: "text",
