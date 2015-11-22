@@ -1,5 +1,6 @@
 define([], function() {
   return function(inputFormat) {
+    var $formElement = $("<div>").addClass("form-group");
     var $inputElement = $("<div>").addClass("inputElement");
     var $labelRow = $("<div>").addClass("row");
     var $inputRow = $("<div>").addClass("row");
@@ -23,7 +24,8 @@ define([], function() {
 
     $inputElement.append($labelRow);
     $inputElement.append($inputRow);
-    return $inputElement[0];
+    $formElement.append($inputElement);
 
+    return $formElement[0];
   };
 });

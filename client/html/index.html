@@ -27,7 +27,6 @@
     <h3>Please enter the emails of the Secret Santa participants</h3>
 
     <form class="form-horizontal">
-      <div class="form-group"></div>
       <button type="submit" id="submitParticipants" class="btn btn-primary col-sm-2">Submit</button>
       <button type="button" id="addParticipant" class="btn btn-default">Add Another Participant</button>
     </form>
@@ -46,7 +45,14 @@
           boxSize: "col-md-4"
         }]
 
-        $(".form-group").append(InputTemplate(inputFormat));
+        var inputElement = InputTemplate(inputFormat);
+        $(inputElement).insertBefore($("button#submitParticipants"));
+
+        $("#addParticipant").click(function(e) {
+          var inputElementFormat = $(inputElement).clone();
+          $(inputElementFormat).insertBefore($("button#submitParticipants"));
+        });
+
       })
     </script>
   </div>

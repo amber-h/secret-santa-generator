@@ -16,6 +16,10 @@ define(["./input_template"], function(InputTemplate) {
         expect(InputTemplate()).toExist();
       });
 
+      it("has class form-group", function() {
+        expect(InputTemplate()).toHaveClass("form-group");
+      })
+
       it("has input labels based on input format", function() {
         var inputFormat = [{
           label: "Name",
