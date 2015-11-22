@@ -12,8 +12,8 @@
 
   <script src="lib/require.js"></script>
   <script src="lib/jquery.js"></script>
-  <script src="bootstrap.js"></script>
   <script src="lib/bootstrap.min.js"></script>
+  <script src="bootstrap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.9.0/validator.min.js">
   </script>
 </head>
@@ -34,7 +34,7 @@
     </form>
 
     <script>
-      require(["form-generator/input_template"], function(InputTemplate) {
+      require(["form-generator/index"], function(InputTemplate) {
         var inputFormat = [{
           label: "Name",
           type: "text",

@@ -1,4 +1,4 @@
-define(["./input_template"], function(InputTemplate) {
+define(["./index"], function(InputTemplate) {
 
   describe("An input template", function() {
 
@@ -91,6 +91,20 @@ define(["./input_template"], function(InputTemplate) {
         expect(button).toHaveClass("btn btn-default");
         expect(button.getAttribute("type")).toEqual("button");
         expect(button.querySelector("i")).toHaveClass("fa fa-minus");
+      });
+
+      it("doesn't have a button to remove participants if there is only 1 participant", function() {
+        var inputFormat = [{
+          label: "Email",
+          type: "email",
+          boxSize: "col-md-4"
+        }]
+
+        var form = InputTemplate(inputFormat);
+
+        var inputRow = form.querySelector(".row:last-of-type");
+
+        expect($(inputRow).has(".removeInput").length).toBe(0);
       });
 
     });

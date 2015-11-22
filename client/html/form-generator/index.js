@@ -19,11 +19,15 @@ define([], function() {
       })
 
       if($(".form-group").length > 0) {
-        var $removeButton = $("<div>").addClass("removeInput col-s-1");
+        var $removeInput = $("<div>").addClass("removeInput col-s-1");
         var $button = $("<button>").attr("type", "button").addClass("btn btn-default");
         var $icon = $("<i>").addClass("fa fa-minus");
-        $removeButton.append($button.append($icon));
-        $inputRow.append($removeButton);
+        $inputRow.append($removeInput.append($button.append($icon)));
+
+        $($removeInput).click(function() {
+          var $row = $(this).parents(".form-group");
+          $row[0].remove();
+        });
       }
     }
 
