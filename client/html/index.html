@@ -51,7 +51,7 @@
         $(inputElement).insertBefore($("button#submitParticipants"));
 
         $("#addParticipant").click(function(e) {
-          var inputElementFormat = $(inputElement).clone();
+          var inputElementFormat = InputTemplate(inputFormat);
           $(inputElementFormat).insertBefore($("button#submitParticipants"));
         });
 

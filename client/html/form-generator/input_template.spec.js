@@ -70,7 +70,28 @@ define(["./input_template"], function(InputTemplate) {
         expect(secondInputElement).toHaveClass("form-control");
         expect(secondInputElement.getAttribute("name")).toEqual("email");
         expect(secondInputElement.getAttribute("placeholder")).toEqual("amber.awesome@example.com");
-      })
+      });
+
+      it("has a button to remove participants when there is more than 1 participant", function() {
+        setFixtures('<div class="form-group"><input placeholder="Some Input"></div>'
+        + '<div class="form-group"><input placeholder="Some Other Input"></div>');
+
+        var inputFormat = [{
+          label: "Email",
+          type: "email",
+          boxSize: "col-md-4"
+        }]
+
+        var form = InputTemplate(inputFormat);
+
+        var inputRow = form.querySelector(".row:last-of-type");
+        var button = inputRow.querySelector(".removeInput button");
+
+        expect($(button).length).toBe(1);
+        expect(button).toHaveClass("btn btn-default");
+        expect(button.getAttribute("type")).toEqual("button");
+        expect(button.querySelector("i")).toHaveClass("fa fa-minus");
+      });
 
     });
 
