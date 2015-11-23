@@ -32,22 +32,17 @@ require(["js/form-generator/index", "js/add-form-element/index"], function(Input
     var names = [];
     var emails = [];
 
-    $("input").each(function(index) {
-      if ($(this).attr("type") == "text")
-      names.push($(this).val());
+    $(".form-group").each(function(index) {
+      var $inputField = $(".form-group").eq(index).find($("input"));
+      var name = $inputField.eq(0).val();
+      var email = $inputField.eq(1).val();
 
-      if ($(this).attr("type") == "email")
-      emails.push($(this).val());
-    });
-
-    for (i = 0; i < names.length; i += 1) {
       var participant = {
-        name: names[i],
-        email: emails[i]
+        name: name,
+        email: email
       };
       participants.push(participant);
-    };
-
+    });
     return participants;
   };
 
