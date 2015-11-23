@@ -52,7 +52,7 @@ require(["js/form-generator/index", "js/add-form-element/index"], function(Input
   };
 
   var sendRequest = function(participants) {
-    $.post("http://192.168.99.100:4567/participants", JSON.stringify(participants),
+    $.post("/participants", JSON.stringify(participants),
     function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
     });

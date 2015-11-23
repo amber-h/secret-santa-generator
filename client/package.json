@@ -1,7 +1,13 @@
 {
-  "name" : "SecretSantaClient",
-  "version" : "0.0.1",
-  "dependencies" : {
-    "express" : "4.10.x"
+  "name": "SecretSantaClient",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "4.10.x"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-jasmine": "~2.2.1",
+    "body-parser": "~1.14.1",
+    "http": "0.0.0"
   }
 }
