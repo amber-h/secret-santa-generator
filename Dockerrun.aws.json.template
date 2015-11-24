@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "Authentication": {
+    "Bucket": "docker-registry-auth-amberhoule",
+    "Key": ".dockercfg"
+  },
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "amberhoule/secret-santa-client:<TAG>",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+       "server"
+     ]
+   },
+    {
+      "name": "server",
+      "image": "amberhoule/secret-santa-server:<TAG>",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 4567,
+          "containerPort": 4567
+        }
+      ]
+    }
+  ]
+}

@@ -10,3 +10,12 @@ test:
   override:
     - docker-compose build
     - docker-compose run --no-deps server spec
+
+deployment:
+  elasticbeanstalk:
+    branch: master
+    commands:
+      - docker tag secretsantagenerator_client amberhoule/secret-santa-client:$CIRCLE_SHA1
+      - docker tag secretsantagenerator_server amberhoule/secret-santa-server:$CIRCLE_SHA1
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - ./deploy.sh $CIRCLE_SHA1
