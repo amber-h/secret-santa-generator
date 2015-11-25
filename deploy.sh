@@ -14,5 +14,5 @@ aws elasticbeanstalk --region="us-east-1" create-application-version --applicati
   --version-label $SHA1 --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE
 
 # Update Elastic Beanstalk environment to new version
-aws elasticbeanstalk --region="us-east-1" update-environment --environment-name secret-santa-sender-stg \
+aws elasticbeanstalk --region="us-east-1" update-environment --environment-name staging \
     --version-label $SHA1
