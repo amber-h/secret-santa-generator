@@ -37,5 +37,5 @@ app.post('/participants', function(req, res) {
   post_req.end();
 });
 
-app.listen(8080);
-console.log('Running on http://localhost:' + 8080);
+app.listen(80);
+console.log('Running on http://localhost:' + 80);
