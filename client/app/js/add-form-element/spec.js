@@ -10,9 +10,11 @@ define(["./index"], function(AddFormElement) {
       expect(typeof AddFormElement).toBe("function");
     });
 
+  describe("adding a participant", function() {
     it("responds to click action", function() {
-      setFixtures('<button id="addParticipant" type="button"></button>'
-                  + '<button id="submitParticipants" type="button"></button>');
+      setFixtures('<div id="buttonRow">'
+                  + '<button id="addParticipant" type="button"></button>'
+                  + '<button id="submitParticipants" type="button"></button></div>');
 
       var inputElement = $("<div id='elementToAdd'>").text("Some Content");
       AddFormElement(inputElement, "#addParticipant");
@@ -23,6 +25,7 @@ define(["./index"], function(AddFormElement) {
       expect('click').toHaveBeenTriggeredOn('#addParticipant');
       expect($("#elementToAdd")).toHaveText("Some Content");
     });
+  });
 
   });
 });
