@@ -3,6 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var http = require('http');
 var app = express();
+var port = process.env.PORT || 80;
 
 app.use(bodyParser.json({ type : '*/*' }));
 app.use(function(err, req, res, next) {
@@ -29,13 +30,14 @@ app.post('/participants', function(req, res) {
 
   var post_req = http.request(options, function(res) {
       res.setEncoding('utf8');
-      res.on('data', function(chunk) {
-
-      });
+      console.log('status: ' + res.statusCode);
+      console.log('headers: ' + JSON.stringify(res.headers));
   });
   post_req.write(request_body);
   post_req.end();
+
+  res.end("Success!");
 });
 
-app.listen(80);
-console.log('Running on http://localhost:' + 80);
+app.listen(port);
+console.log('Running on http://localhost:' + port);
