@@ -23,7 +23,7 @@ class EmailSender
 def build_email email_recipient, gift_recipient
   {
     "from_email"=>"santa@secretsantagenerator.com",
-    "text"=>"Disclaimer: Due to current secret santa generator being under construction, there are no available adorable christmas animal photos. Nonetheless, your secret santa is #{gift_recipient[:name]} KEEP IT SECRET HAPPY CHRISTMAS!",
+    "text"=>"Your secret santa is #{gift_recipient[:name]} KEEP IT SECRET HAPPY CHRISTMAS!",
     "to"=>
       [{"email" => email_recipient[:email],
         "type" => "to",
