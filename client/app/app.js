@@ -3,12 +3,12 @@ require(["js/form-generator/index", "js/add-form-element/index"], function(Input
     label: "Name",
     type: "text",
     value: "Amber Awesome",
-    boxSize: "col-md-2"
+    boxSize: "col-md-4"
   }, {
     label: "Email",
     type: "email",
     value: "amber.awesome@example.com",
-    boxSize: "col-md-4"
+    boxSize: "col-md-6"
   }]
 
   var $form = $("form.form-horizontal");

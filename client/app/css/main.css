@@ -1,15 +1,12 @@
 body {
   font-family: 'Lato';
   padding-top: 100px;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 h1 {
   color: #fff;
-}
-
-button, input, label {
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 a {
@@ -22,16 +19,19 @@ a:hover {
   text-decoration: none;
 }
 
-#buttonRow {
-  padding-top: 4rem;
+.row {
+  margin: 0px;
 }
 
 .navbar {
   background-color: rgb(210, 26, 26);
+  min-height: 35px;
 }
 .btn-primary {
   background-color: #000;
   border-color: #000;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .btn-primary.disabled {
@@ -46,4 +46,12 @@ a:hover {
 
 .form-horizontal {
   padding-top: 3rem;
+}
+
+.form-control, .btn {
+  border-radius: 0px;
+}
+
+.center-block {
+  max-width: 600px;
 }
