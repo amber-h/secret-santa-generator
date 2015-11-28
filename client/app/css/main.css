@@ -12,6 +12,16 @@ button, input, label {
   margin-right: 1rem;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 #buttonRow {
   padding-top: 4rem;
 }

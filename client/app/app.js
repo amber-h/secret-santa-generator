@@ -49,7 +49,7 @@ require(["js/form-generator/index", "js/add-form-element/index"], function(Input
   var sendRequest = function(participants) {
     $.post("/participants", JSON.stringify(participants),
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+        window.location = "html/thankyou.html";
     });
   };
 
