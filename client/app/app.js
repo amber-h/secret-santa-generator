@@ -1,4 +1,4 @@
-require(["js/form-generator/index", "js/add-form-element/index"], function(InputTemplate, AddFormElement) {
+require(["js/form-generator/index", "js/add-form-element/index", "js/form-validations/index"], function(InputTemplate, AddFormElement, FormValidations) {
   var inputFormat = [{
     label: "Name",
     type: "text",
@@ -12,12 +12,12 @@ require(["js/form-generator/index", "js/add-form-element/index"], function(Input
   }]
 
   var $form = $("form.form-horizontal");
-  $form.validator();
-
   $(InputTemplate(inputFormat)).insertBefore($("#buttonRow"));
+  FormValidations($form);
 
   $("#addParticipant").click(function(e) {
     var inputElementFormat = InputTemplate(inputFormat);
+    FormValidations(inputElementFormat);
     $(inputElementFormat).hide().insertBefore($("#buttonRow")).fadeIn(150);
   });
 
