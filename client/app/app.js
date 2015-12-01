@@ -17,7 +17,8 @@ require(["js/form-generator/index", "js/add-form-element/index", "js/form-valida
 
   $("#addParticipant").click(function(e) {
     var inputElementFormat = InputTemplate(inputFormat);
-    FormValidations(inputElementFormat);
+    $("form.form-horizontal").formValidation('addField', $(inputElementFormat).find('input[name="text"]'));
+    $("form.form-horizontal").formValidation('addField', $(inputElementFormat).find('input[name="email"]'));
     $(inputElementFormat).hide().insertBefore($("#buttonRow")).fadeIn(150);
   });
 
